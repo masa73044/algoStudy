@@ -159,12 +159,84 @@ LinkedList.prototype.removeItem = function (value) {
 
 // Extra Bonus
 // remove element at specified position in list
-LinkedList.prototype.removePosition = function (position) {};
+LinkedList.prototype.removePosition = function (position) {
+  //check if our position is the head
+  if (position === 1) {
+    // this.head.next = null
+    // this.head.next <- new head
+
+    // 1 2 3
+    // next = 2
+    // remove 1
+
+    // 1 -> 2 -> 3
+
+    // nextNode = 2
+
+    // 1 -> null
+
+    // 1 -> null    2 -> 3
+
+    // head = 1;
+    // head.next = 2
+    // head.next.next = 3
+    let nextNode = this.head.next; // 2
+    this.head.next = null; // head.next === null
+    this.head = nextNode; // head === 2;
+    return;
+  }
+
+  let current = this.head;
+  let counter = 1;
+  let previous = this.head;
+
+  while (current !== null) {
+    if (current.next === null) {
+      previous.next = null;
+      this.tail = previous;
+      return;
+    }
+    // 1 -> 2 -> 3
+    // 1 -> 3
+
+    if (counter === position) {
+      // if (current.next === null) {
+      //   this.tail = previous;
+      // }
+      // current = node 2
+      // counter = 2
+
+      // previous = node 1 -> node 3
+      previous.next = current.next;
+      // node 2 -> null
+      current.next = null;
+      return;
+    } else {
+      previous = current;
+      counter++;
+      current = current.next;
+    }
+  }
+  //   else if(this.next === 2) {
+  //  let currNode = this.next.next;
+  //  this.next = null;
+
+  //   }
+
+  //if yes, reassing the next value to the head
+  //otherwise, go to next value an d check
+  //if next value has the value, reassign the pointer to the next value
+};
 
 var newList = new LinkedList();
-console.log(newList.push(23));
-console.log(newList.push(32));
-console.log(newList.push(344));
+// console.log(newList.removePosition())
+console.log(newList.push(1));
+console.log(newList.push(2));
+console.log(newList.push(3));
+console.log(newList);
+console.log(newList.removePosition(3));
+console.log(newList);
+
 // console.log(newList);
 // expected => LinkedList {
 //   head: Node { value: 23, next: Node { value: 32, next: [Node] } },
@@ -176,8 +248,8 @@ console.log(newList.push(344));
 // console.log(newList.contains(344)); //true
 // console.log(newList.contains(44)); //false
 
-console.log(newList.addToHead(2));
-console.log(newList);
+// console.log(newList.addToHead(2));
+// console.log(newList);
 // expected output :
 // LinkedList { head:
 // Node { value: 2,
@@ -186,8 +258,8 @@ console.log(newList);
 //        next: Node { value: 32, next: Node { value: 344, next: null } } } },
 //  tail: Node { value: 344, next: null } }
 
-console.log(newList.insert(9, 4));
-console.log(newList);
+// console.log(newList.insert(9, 4));
+// console.log(newList);
 // expected output:
 // LinkedList { head:
 //     Node { value: 2,
@@ -198,8 +270,8 @@ console.log(newList);
 //             next: Node { value: 9, next: Node { value: 344, next: null } } } } },
 //    tail: Node { value: 344, next: null } }
 
-console.log(newList.removeItem(2));
-console.log(newList);
+// console.log(newList.removeItem(2));
+// console.log(newList);
 
 // LinkedList { tail: Node { value: 344, next: null },
 //   head:
@@ -208,17 +280,10 @@ console.log(newList);
 //       Node { value: 32,
 //         next: Node { value: 9, next: Node { value: 344, next: null } } } } }
 
-console.log(newList.removeItem(9));
-console.log(newList);
+// console.log(newList.removeItem(9));
+// console.log(newList);
 
-console.log(newList.removeItem(344));
-console.log(newList.removeItem(444));
-console.log(newList.removeItem(23));
-console.log(newList.removeItem(32));
-console.log(newList.removeItem(9));
-console.log(newList.removeItem(344));
-
-console.log(newList);
+// console.log("current", newList);
 
 // traverse(newList.head);
 
