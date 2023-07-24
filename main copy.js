@@ -214,6 +214,23 @@ function rockPaperScissors(num) {
       return;
     }
 
+    // R P S
+
+    // curCombs = R
+    // function(curCombs, combs)
+    // R R, i = 0
+    // conditional -> combs = RR
+    // pop() -> R
+
+    // R, i = 1
+    // R P
+    // function()
+    // conditional
+
+    // pop() -> R
+    // i = 2
+    // R S
+
     for (let i = start; i < rps.length; i++) {
       let curRps = rps[i];
       curCombs.push(curRps);
@@ -282,7 +299,7 @@ function insertionSort(array) {
   // return sortedArray;
 }
 
-// console.log(insertionSort([7, 5, 3, 10, 12, 1]));
+console.log(insertionSort([7, 5, 3, 10, 12, 1]));
 
 function bubbleSort(array) {}
 
